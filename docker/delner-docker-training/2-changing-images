@@ -1,0 +1,150 @@
+Script started, output file is 2-changing-images
+Restored session: среда, 13 апреля 2022 г. 09:00:49 (MSK)
+➜  delner-docker-training git:(main) ✗ docker ps -a
+CONTAINER ID   IMAGE     COMMAND   CREATED   STATUS    PORTS     NAMES
+➜  delner-docker-training git:(main) ✗ docker pull ubuntu
+Using default tag: latest
+latest: Pulling from library/ubuntu
+Digest: sha256:9101220a875cee98b016668342c489ff0674f247f6ca20dfc91b91c0f28581ae
+Status: Image is up to date for ubuntu:latest
+docker.io/library/ubuntu:latest
+➜  delner-docker-training git:(main) ✗ docker ps -a
+CONTAINER ID   IMAGE     COMMAND   CREATED   STATUS    PORTS     NAMES
+➜  delner-docker-training git:(main) ✗ docker ps
+CONTAINER ID   IMAGE     COMMAND   CREATED   STATUS    PORTS     NAMES
+➜  delner-docker-training git:(main) ✗ docker run -it ubuntu /bin/bash 
+root@23cdc48fc823:/# ping yandex.ru
+bash: ping: command not found
+root@23cdc48fc823:/# apt-get update
+Get:1 http://archive.ubuntu.com/ubuntu focal InRelease [265 kB]
+Get:2 http://security.ubuntu.com/ubuntu focal-security InRelease [114 kB]           
+Get:3 http://archive.ubuntu.com/ubuntu focal-updates InRelease [114 kB]             
+Get:4 http://archive.ubuntu.com/ubuntu focal-backports InRelease [108 kB]
+Get:5 http://archive.ubuntu.com/ubuntu focal/restricted amd64 Packages [33.4 kB]
+Get:6 http://archive.ubuntu.com/ubuntu focal/multiverse amd64 Packages [177 kB]
+Get:7 http://archive.ubuntu.com/ubuntu focal/main amd64 Packages [1275 kB]                
+Get:8 http://archive.ubuntu.com/ubuntu focal/universe amd64 Packages [11.3 MB]            
+Get:9 http://security.ubuntu.com/ubuntu focal-security/multiverse amd64 Packages [25.8 kB]
+Get:10 http://security.ubuntu.com/ubuntu focal-security/restricted amd64 Packages [1104 kB]
+Get:11 http://archive.ubuntu.com/ubuntu focal-updates/restricted amd64 Packages [1178 kB]
+Get:12 http://archive.ubuntu.com/ubuntu focal-updates/universe amd64 Packages [1153 kB]      
+Get:13 http://security.ubuntu.com/ubuntu focal-security/universe amd64 Packages [868 kB]     
+Get:14 http://archive.ubuntu.com/ubuntu focal-updates/main amd64 Packages [2146 kB]        
+Get:15 http://archive.ubuntu.com/ubuntu focal-updates/multiverse amd64 Packages [30.3 kB]  
+Get:16 http://archive.ubuntu.com/ubuntu focal-backports/universe amd64 Packages [26.0 kB]   
+Get:17 http://archive.ubuntu.com/ubuntu focal-backports/main amd64 Packages [51.2 kB]     
+Get:18 http://security.ubuntu.com/ubuntu focal-security/main amd64 Packages [1731 kB]      
+Fetched 21.7 MB in 3s (6767 kB/s)                            
+Reading package lists... Done
+root@23cdc48fc823:/# apt-get install iputils-ping
+Reading package lists... Done
+Building dependency tree       
+Reading state information... Done
+The following additional packages will be installed:
+  libcap2 libcap2-bin libpam-cap
+The following NEW packages will be installed:
+  iputils-ping libcap2 libcap2-bin libpam-cap
+0 upgraded, 4 newly installed, 0 to remove and 4 not upgraded.
+Need to get 90.5 kB of archives.
+After this operation, 333 kB of additional disk space will be used.
+Do you want to continue? [Y/n] y
+Get:1 http://archive.ubuntu.com/ubuntu focal/main amd64 libcap2 amd64 1:2.32-1 [15.9 kB]
+Get:2 http://archive.ubuntu.com/ubuntu focal/main amd64 libcap2-bin amd64 1:2.32-1 [26.2 kB]
+Get:3 http://archive.ubuntu.com/ubuntu focal/main amd64 iputils-ping amd64 3:20190709-3 [40.1 kB]
+Get:4 http://archive.ubuntu.com/ubuntu focal/main amd64 libpam-cap amd64 1:2.32-1 [8352 B]
+Fetched 90.5 kB in 0s (281 kB/s)   
+debconf: delaying package configuration, since apt-utils is not installed
+Selecting previously unselected package libcap2:amd64.
+(Reading database ... 4127 files and directories currently installed.)
+Preparing to unpack .../libcap2_1%3a2.32-1_amd64.deb ...
+Unpacking libcap2:amd64 (1:2.32-1) ...
+Selecting previously unselected package libcap2-bin.
+Preparing to unpack .../libcap2-bin_1%3a2.32-1_amd64.deb ...
+Unpacking libcap2-bin (1:2.32-1) ...
+Selecting previously unselected package iputils-ping.
+Preparing to unpack .../iputils-ping_3%3a20190709-3_amd64.deb ...
+Unpacking iputils-ping (3:20190709-3) ...
+Selecting previously unselected package libpam-cap:amd64.
+Preparing to unpack .../libpam-cap_1%3a2.32-1_amd64.deb ...
+Unpacking libpam-cap:amd64 (1:2.32-1) ...
+Setting up libcap2:amd64 (1:2.32-1) ...
+Setting up libcap2-bin (1:2.32-1) ...
+Setting up libpam-cap:amd64 (1:2.32-1) ...
+debconf: unable to initialize frontend: Dialog
+debconf: (No usable dialog-like program is installed, so the dialog based frontend cannot be used. at /usr/share/perl5/Debconf/FrontEnd/Dialog.pm line 76.)
+debconf: falling back to frontend: Readline
+debconf: unable to initialize frontend: Readline
+debconf: (Can't locate Term/ReadLine.pm in @INC (you may need to install the Term::ReadLine module) (@INC contains: /etc/perl /usr/local/lib/x86_64-linux-gnu/perl/5.30.0 /usr/local/share/perl/5.30.0 /usr/lib/x86_64-linux-gnu/perl5/5.30 /usr/share/perl5 /usr/lib/x86_64-linux-gnu/perl/5.30 /usr/share/perl/5.30 /usr/local/lib/site_perl /usr/lib/x86_64-linux-gnu/perl-base) at /usr/share/perl5/Debconf/FrontEnd/Readline.pm line 7.)
+debconf: falling back to frontend: Teletype
+Setting up iputils-ping (3:20190709-3) ...
+Processing triggers for libc-bin (2.31-0ubuntu9.7) ...
+root@23cdc48fc823:/# ping yandex.ru
+PING yandex.ru (77.88.55.80) 56(84) bytes of data.
+64 bytes from yandex.ru (77.88.55.80): icmp_seq=1 ttl=37 time=27.5 ms
+64 bytes from yandex.ru (77.88.55.80): icmp_seq=2 ttl=37 time=43.4 ms
+64 bytes from yandex.ru (77.88.55.80): icmp_seq=3 ttl=37 time=38.0 ms
+64 bytes from yandex.ru (77.88.55.80): icmp_seq=4 ttl=37 time=29.5 ms
+64 bytes from yandex.ru (77.88.55.80): icmp_seq=5 ttl=37 time=31.6 ms
+^C
+--- yandex.ru ping statistics ---
+5 packets transmitted, 5 received, 0% packet loss, time 4022ms
+rtt min/avg/max/mdev = 27.543/33.995/43.432/5.877 ms
+root@23cdc48fc823:/# exit
+exit
+➜  delner-docker-training git:(main) ✗ docker ps -a
+CONTAINER ID   IMAGE     COMMAND       CREATED          STATUS                     PORTS     NAMES
+23cdc48fc823   ubuntu    "/bin/bash"   24 minutes ago   Exited (0) 2 seconds ago             suspicious_easley
+➜  delner-docker-training git:(main) ✗ docker commit --help
+
+Usage:  docker commit [OPTIONS] CONTAINER [REPOSITORY[:TAG]]
+
+Create a new image from a container's changes
+
+Options:
+  -a, --author string    Author (e.g., "John Hannibal Smith <hannibal@a-team.com>")
+  -c, --change list      Apply Dockerfile instruction to the created image
+  -m, --message string   Commit message
+  -p, --pause            Pause container during commit (default true)
+➜  delner-docker-training git:(main) ✗ docker commit -a 'Olzhas Dairov' -m 'With ping' 23cd olzhasdairov/ubuntu-ping
+sha256:9f2559b1876554f46a0bd2c9fddeff89c326a28190de6019ed8741b4c879f08e
+➜  delner-docker-training git:(main) ✗ docker imsages
+docker: 'imsages' is not a docker command.
+See 'docker --help'
+➜  delner-docker-training git:(main) ✗ docker images 
+REPOSITORY                 TAG       IMAGE ID       CREATED          SIZE
+olzhasdairov/ubuntu-ping   latest    9f2559b18765   15 seconds ago   109MB
+ubuntu                     latest    825d55fb6340   8 days ago       72.8MB
+ubuntu                     16.04     b6f507652425   7 months ago     135MB
+➜  delner-docker-training git:(main) ✗ docker run -it --rm olzhasdairov/ubuntu-ping /bin/bash
+root@219aaa4e4880:/# ping
+ping: usage error: Destination address required
+root@219aaa4e4880:/# ping yandex.ru
+PING yandex.ru (77.88.55.77) 56(84) bytes of data.
+64 bytes from yandex.ru (77.88.55.77): icmp_seq=1 ttl=37 time=35.5 ms
+64 bytes from yandex.ru (77.88.55.77): icmp_seq=2 ttl=37 time=30.8 ms
+64 bytes from yandex.ru (77.88.55.77): icmp_seq=3 ttl=37 time=26.3 ms
+64 bytes from yandex.ru (77.88.55.77): icmp_seq=4 ttl=37 time=23.2 ms
+64 bytes from yandex.ru (77.88.55.77): icmp_seq=5 ttl=37 time=20.9 ms
+^C
+--- yandex.ru ping statistics ---
+5 packets transmitted, 5 received, 0% packet loss, time 4018ms
+rtt min/avg/max/mdev = 20.864/27.319/35.453/5.252 ms
+root@219aaa4e4880:/# exit
+exit
+➜  delner-docker-training git:(main) ✗ docker ps -a
+CONTAINER ID   IMAGE     COMMAND       CREATED          STATUS                     PORTS     NAMES
+23cdc48fc823   ubuntu    "/bin/bash"   28 minutes ago   Exited (0) 4 minutes ago             suspicious_easley
+➜  delner-docker-training git:(main) ✗ docker rm 23cd
+23cd
+➜  delner-docker-training git:(main) ✗ docker ps -a
+CONTAINER ID   IMAGE     COMMAND   CREATED   STATUS    PORTS     NAMES
+➜  delner-docker-training git:(main) ✗ docker images
+REPOSITORY                 TAG       IMAGE ID       CREATED              SIZE
+olzhasdairov/ubuntu-ping   latest    9f2559b18765   About a minute ago   109MB
+ubuntu                     latest    825d55fb6340   8 days ago           72.8MB
+ubuntu                     16.04     b6f507652425   7 months ago         135MB
+➜  delner-docker-training git:(main) ✗ exit
+Saving session...completed.
+Deleting expired sessions...none found.
+
+Script done, output file is 2-changing-images
