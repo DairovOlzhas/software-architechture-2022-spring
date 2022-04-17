@@ -1,0 +1,127 @@
+Script started, output file is 5-volumes
+Restored session: воскресенье, 17 апреля 2022 г. 21:22:30 (MSK)
+➜  delner-docker-training git:(main) ✗ docker run --rm -d --name apache -p 80:80 httpd:2.4
+Unable to find image 'httpd:2.4' locally
+2.4: Pulling from library/httpd
+c229119241af: Pull complete 
+1805d911aae4: Pull complete 
+e3709b515d9c: Pull complete 
+4f53b8f15873: Pull complete 
+3b60f356ab85: Pull complete 
+Digest: sha256:e3c40b99ffa305c6e52346a6618b1fb47ea0568c999b26f8900cd26febab1160
+Status: Downloaded newer image for httpd:2.4
+dc8869ee122bb996676a9df974d50774fee81669f901d39e4b1e2be1899498e2
+➜  delner-docker-training git:(main) ✗ docker ps -a
+CONTAINER ID   IMAGE               COMMAND                  CREATED          STATUS                        PORTS                NAMES
+dc8869ee122b   httpd:2.4           "httpd-foreground"       9 seconds ago    Up 8 seconds                  0.0.0.0:80->80/tcp   apache
+325b69d429b2   olzhasdairov/ping   "sh -c 'ping $PING_T…"   56 minutes ago   Exited (130) 56 minutes ago                        amazing_keldysh
+➜  delner-docker-training git:(main) ✗ curl localhost
+<html><body><h1>It works!</h1></body></html>
+➜  delner-docker-training git:(main) ✗ touch index.html
+➜  delner-docker-training git:(main) ✗ echo "<html><body><h1>It works in Docker!</h1></body></html>" > index.html 
+zsh: event not found: </h1></body></html>
+➜  delner-docker-training git:(main) ✗ echo "<html><body><h1>It works in Docker!</h1></body></html>" > index.html
+zsh: event not found: </h1></body></html>
+➜  delner-docker-training git:(main) ✗ vim index.html 
+➜  delner-docker-training git:(main) ✗ docker cp index.html apache:/usr/local/apache2/htdocs/
+➜  delner-docker-training git:(main) ✗ curl localhost
+echo "<html><body><h1>It works in Docker!</h1></body></html>" > index.html
+
+➜  delner-docker-training git:(main) ✗ vim index.html 
+➜  delner-docker-training git:(main) ✗ docker cp index.html apache:/usr/local/apache2/htdocs/
+➜  delner-docker-training git:(main) ✗ curl localhost                                        
+<html><body><h1>It works in Docker!</h1></body></html>
+
+➜  delner-docker-training git:(main) ✗ docker stop apache
+apache
+➜  delner-docker-training git:(main) ✗ docker run --rm -d --name apache -p 80:80 httpd:2.4  
+e86853c95f3395bb95a0ecedce2251b7ebfb6daeb9609f71a92ce7d6fec6ddc9
+➜  delner-docker-training git:(main) ✗ curl localhost
+<html><body><h1>It works!</h1></body></html>
+➜  delner-docker-training git:(main) ✗ docker volume ls
+DRIVER    VOLUME NAME
+➜  delner-docker-training git:(main) ✗ docker volume create apachevolume
+apachevolume
+➜  delner-docker-training git:(main) ✗ docker volume ls
+DRIVER    VOLUME NAME
+local     apachevolume
+                                                                                                                                                                                                                                                                                                         
+➜  delner-docker-training git:(main) ✗ 
+➜  delner-docker-training git:(main) ✗ docker volume rm apachevolme 
+Error: No such volume: apachevolme
+➜  delner-docker-training git:(main) ✗ docker volume rm apachevolume
+apachevolume
+➜  delner-docker-training git:(main) ✗ docker volume create httpd_htdocs
+httpd_htdocs
+➜  delner-docker-training git:(main) ✗ docker run --rm -d --name apache -p 80:80 -v http_htdocs:/usr/local/apache2/htdocs/ httpd:2.4
+docker: Error response from daemon: Conflict. The container name "/apache" is already in use by container "e86853c95f3395bb95a0ecedce2251b7ebfb6daeb9609f71a92ce7d6fec6ddc9". You have to remove (or rename) that container to be able to reuse that name.
+See 'docker run --help'.
+➜  delner-docker-training git:(main) ✗ docker ps -a
+CONTAINER ID   IMAGE               COMMAND                  CREATED             STATUS                           PORTS                NAMES
+e86853c95f33   httpd:2.4           "httpd-foreground"       4 minutes ago       Up 4 minutes                     0.0.0.0:80->80/tcp   apache
+325b69d429b2   olzhasdairov/ping   "sh -c 'ping $PING_T…"   About an hour ago   Exited (130) About an hour ago                        amazing_keldysh
+➜  delner-docker-training git:(main) ✗ docker rm e86
+Error response from daemon: You cannot remove a running container e86853c95f3395bb95a0ecedce2251b7ebfb6daeb9609f71a92ce7d6fec6ddc9. Stop the container before attempting removal or force remove
+➜  delner-docker-training git:(main) ✗ docker stop apahce
+Error response from daemon: No such container: apahce
+➜  delner-docker-training git:(main) ✗ docker stop apache
+apache
+➜  delner-docker-training git:(main) ✗ docker rm apache
+Error: No such container: apache
+➜  delner-docker-training git:(main) ✗ docker ps -a    
+CONTAINER ID   IMAGE               COMMAND                  CREATED             STATUS                           PORTS     NAMES
+325b69d429b2   olzhasdairov/ping   "sh -c 'ping $PING_T…"   About an hour ago   Exited (130) About an hour ago             amazing_keldysh
+➜  delner-docker-training git:(main) ✗ docker run --rm -d --name apache -p 80:80 -v http_htdocs:/usr/local/apache2/htdocs/ httpd:2.4
+62ea9d28f847884ea47e86bef28d47a0ade03af1fd6845cf43ce5a34ef8421f0
+➜  delner-docker-training git:(main) ✗ docker cp index.html apache:/usr/local/apache2/htdocs/
+➜  delner-docker-training git:(main) ✗ curl localhost
+<html><body><h1>It works in Docker!</h1></body></html>
+
+➜  delner-docker-training git:(main) ✗ docker stop apache
+apache
+➜  delner-docker-training git:(main) ✗ docker run --rm -d --name apache -p 80:80 -v http_htdocs:/usr/local/apache2/htdocs/ httpd:2.4
+0d35042d01a87e04c5546f4b4c7fb7b32c0a2e56e7d9da41536351e2ecdd0d59
+➜  delner-docker-training git:(main) ✗ curl localhost
+<html><body><h1>It works in Docker!</h1></body></html>
+
+➜  delner-docker-training git:(main) ✗ docker stop apache
+apache
+➜  delner-docker-training git:(main) ✗ docker rm http_htdocs
+Error: No such container: http_htdocs
+➜  delner-docker-training git:(main) ✗ docker volume list
+DRIVER    VOLUME NAME
+local     http_htdocs
+local     httpd_htdocs
+➜  delner-docker-training git:(main) ✗ docker volume rm http_htdocs
+http_htdocs
+➜  delner-docker-training git:(main) ✗ docker volume rm httpd_htdocs
+httpd_htdocs
+➜  delner-docker-training git:(main) ✗ docker volume list
+DRIVER    VOLUME NAME
+➜  delner-docker-training git:(main) ✗ pwd
+/Users/olzhasdairov/study/software-architechture-2022-spring/docker/delner-docker-training
+➜  delner-docker-training git:(main) ✗ docker run --rm -d --name apache -v /Users/olzhasdairov/study/software-architechture-2022-spring/docker/delner-docker-training:/usr/local/apache2/htdocs/ httpd:2.4
+dbf48bcd163b211829e5310ebb01e62b043ce0c28369ac0f53739c405d065b31
+➜  delner-docker-training git:(main) ✗ vim index.html 
+➜  delner-docker-training git:(main) ✗ curl localhost
+curl: (7) Failed to connect to localhost port 80: Connection refused
+➜  delner-docker-training git:(main) ✗ docker stop apache
+apache
+➜  delner-docker-training git:(main) ✗ docker run --rm -d --name apache -p 80:80 -v /Users/olzhasdairov/study/software-architechture-2022-spring/docker/delner-docker-training:/usr/local/apache2/htdocs/ httpd:2.4
+bf109cadaf92874f40c93f8fab3cac1b4e817454eb0fd1ded274c185a0318ed1
+➜  delner-docker-training git:(main) ✗ curl localhost
+<html><body><h1>It works in Docker!</h1></body></html>
+
+➜  delner-docker-training git:(main) ✗ vim index.html 
+➜  delner-docker-training git:(main) ✗ cat index.html 
+<html><body><h1>Serving file from laptop and it works in Docker!</h1></body></html>
+
+➜  delner-docker-training git:(main) ✗ curl localhost
+<html><body><h1>Serving file from laptop and it works in Docker!</h1></body></html>
+
+➜  delner-docker-training git:(main) ✗ docker stop apache
+apache
+➜  delner-docker-training git:(main) ✗ exit
+Saving session...completed.
+
+Script done, output file is 5-volumes
