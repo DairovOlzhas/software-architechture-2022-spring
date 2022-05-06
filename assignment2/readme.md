@@ -96,3 +96,4 @@ Pulling ubuntu images with/without specifying image version
 #### 2.3.5 Push your image
 
 ![2.3.5.1](images/2.3.5.1.png)
+![2.3.5.2](images/2.3.5.2.png)
